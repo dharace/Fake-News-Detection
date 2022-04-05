@@ -13,23 +13,9 @@ from nltk.stem import SnowballStemmer
 from nltk.stem.porter import PorterStemmer
 from nltk.tokenize import word_tokenize
 import seaborn as sb
-
-#before reading the files, setup the working directory to point to project repo
-#reading data files 
-
-
-test_filename = 'test.csv'
-train_filename = 'train.csv'
-valid_filename = 'valid.csv'
-
-train_news = pd.read_csv(train_filename)
-test_news = pd.read_csv(test_filename)
-valid_news = pd.read_csv(valid_filename)
-
-
-
+ 
 #data observation
-def data_obs():
+def data_obs(train_news, test_news, valid_news):
     print("training dataset size:")
     print(train_news.shape)
     print(train_news.head(10))
@@ -58,7 +44,7 @@ create_distribution(valid_news)
 
 #data integrity check (missing label values)
 #none of the datasets contains missing values therefore no cleaning required
-def data_qualityCheck():
+def data_qualityCheck(train_news, test_news, valid_news):
     
     print("Checking data qualitites...")
     train_news.isnull().sum()
