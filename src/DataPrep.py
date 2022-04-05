@@ -32,16 +32,8 @@ def data_obs(train_news, test_news, valid_news):
 
 #distribution of classes for prediction
 def create_distribution(dataFile):
-    
     return sb.countplot(x='Label', data=dataFile, palette='hls')
     
-
-#by calling below we can see that training, test and valid data seems to be failry evenly distributed between the classes
-create_distribution(train_news)
-create_distribution(test_news)
-create_distribution(valid_news)
-
-
 #data integrity check (missing label values)
 #none of the datasets contains missing values therefore no cleaning required
 def data_qualityCheck(train_news, test_news, valid_news):
