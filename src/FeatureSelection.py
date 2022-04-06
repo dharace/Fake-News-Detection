@@ -1,14 +1,11 @@
 # -*- coding: utf-8 -*-
 """
-Created on Sat Nov  4 14:13:38 2017
-
-@author: NishitP
+@author: Dhara & Avi
 
 Note: before we can train an algorithm to classify fake news labels, we need to extract features from it. It means reducing the mass
 of unstructured data into some uniform set of attributes that an algorithm can understand. For fake news detection, it could be 
 word counts (bag of words). 
 """
-import DataPrep
 import pandas as pd
 import numpy as np
 from sklearn.feature_extraction.text import CountVectorizer
@@ -21,17 +18,17 @@ from nltk.tokenize import word_tokenize
 from gensim.models.word2vec import Word2Vec
 
 
-#we will start with simple bag of words technique 
-#creating feature vector - document term matrix
-countV = CountVectorizer()
-train_count = countV.fit_transform(DataPrep.train_news['Statement'].values)
-
-print(countV)
-print(train_count)
-
 #print training doc term matrix
 #we have matrix of size of (10240, 12196) by calling below
-def get_countVectorizer_stats():
+def get_countVectorizer_stats(train_news):
+    
+    #we will start with simple bag of words technique 
+    #creating feature vector - document term matrix
+    countV = CountVectorizer()
+    train_count = countV.fit_transform(DataPrep.train_news['Statement'].values)
+
+    print(countV)
+    print(train_count)
     
     #vocab size
     train_count.shape
@@ -43,12 +40,12 @@ def get_countVectorizer_stats():
     print(countV.get_feature_names()[:25])
 
 
-#create tf-df frequency features
-#tf-idf 
-tfidfV = TfidfTransformer()
-train_tfidf = tfidfV.fit_transform(train_count)
+def get_tfidf_stats(train_count):
+    #create tf-df frequency features
+    #tf-idf 
+    tfidfV = TfidfTransformer()
+    train_tfidf = tfidfV.fit_transform(train_count)
 
-def get_tfidf_stats():
     train_tfidf.shape
     #get train data feature names 
     print(train_tfidf.A[:10])
