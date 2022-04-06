@@ -103,7 +103,7 @@ class TfidfEmbeddingVectorizer(object):
 
 
     #Using Word2Vec 
-    with open(glove_6B_50d, "rb") as lines:
+    with open(self.glove_6B_50d, "rb") as lines:
         w2v = {line.split()[0]: np.array(map(float, line.split()[1:]))
                for line in lines}
 
