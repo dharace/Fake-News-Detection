@@ -22,8 +22,9 @@ from gensim.models.word2vec import Word2Vec
 
 class TfidfEmbeddingVectorizer(object):
 
-    def __init__(self, train_news):
+    def __init__(self, train_news, glove_6B_50d):
         self.train_news = train_news
+        self.glove_6B_50d = glove_6B_50d
         #we will start with simple bag of words technique 
         #creating feature vector - document term matrix
         self.countV = CountVectorizer()
@@ -102,7 +103,7 @@ class TfidfEmbeddingVectorizer(object):
 
 
     #Using Word2Vec 
-    with open("glove.6B.50d.txt", "rb") as lines:
+    with open(glove_6B_50d, "rb") as lines:
         w2v = {line.split()[0]: np.array(map(float, line.split()[1:]))
                for line in lines}
 
