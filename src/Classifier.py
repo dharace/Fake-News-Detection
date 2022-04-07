@@ -23,6 +23,12 @@ from sklearn.metrics import average_precision_score
 class Classifier(object):
 
     def __init__(self, countV, train_news, tfidf_ngram, model_file):
+        
+        
+        self.countV = countV
+        self.train_news = train_news
+        self.tfidf_ngram = tfidf_ngram
+        self.model_file = model_file
        
         #the feature selection has been done in FeatureSelection.py module. here we will create models using those features for prediction
         #first we will use bag of words techniques
