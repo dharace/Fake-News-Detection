@@ -20,7 +20,7 @@ import nltk.corpus
 from nltk.tokenize import word_tokenize
 from gensim.models.word2vec import Word2Vec
 
-class TfidfEmbeddingVectorizer(object):
+class FeatureSelection(object):
 
     def __init__(self, train_news, glove_6B_50d):
         self.train_news = train_news
