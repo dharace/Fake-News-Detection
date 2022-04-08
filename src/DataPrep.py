@@ -20,6 +20,8 @@ class DataPrep(object):
         self.eng_stemmer = SnowballStemmer('english')
         self.stopwords = set(nltk.corpus.stopwords.words('english'))
         self.porter = PorterStemmer()
+        nltk.download('treebank')
+        nltk.download('stopwords')
        
  
     #data observation
