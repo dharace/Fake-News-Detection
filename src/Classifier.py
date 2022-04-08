@@ -26,6 +26,7 @@ class Classifier(object):
         
         
         self.countV = countV
+        self.test_news = test_news
         self.train_news = train_news
         self.tfidf_ngram = tfidf_ngram
         self.model_file = model_file
