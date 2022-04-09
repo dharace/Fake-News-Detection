@@ -23,7 +23,7 @@ from sklearn.metrics import average_precision_score
 class Classifier(object):
 
     def __init__(self, countV, test_news, train_news, tfidf_ngram, model_file):
-        
+        import numpy as np
         
         self.countV = countV
         self.test_news = test_news
