@@ -208,8 +208,7 @@ class Classifier(object):
         self.random_forest_final.fit(self.train_news['Statement'],self.train_news['Label'])
         self.predicted_rf_final = self.random_forest_final.predict(self.test_news['Statement'])
         np.mean(self.predicted_rf_final == self.test_news['Label'])
-        print(metrics.classification_report(self.test_news['Label'], self.predicted_rf_final))
-
+      
         self.logR_pipeline_final = Pipeline([
                 #('LogRCV',countV_ngram),
                 ('LogR_tfidf',TfidfVectorizer(stop_words='english',ngram_range=(1,5),use_idf=True,smooth_idf=False)),
@@ -219,9 +218,7 @@ class Classifier(object):
         self.logR_pipeline_final.fit(self.train_news['Statement'],self.train_news['Label'])
         self.predicted_LogR_final = self.logR_pipeline_final.predict(self.test_news['Statement'])
         np.mean(self.predicted_LogR_final == self.test_news['Label'])
-        #accuracy = 0.62
-        print(metrics.classification_report(self.test_news['Label'], self.predicted_LogR_final))
-
+     
         """ by running both random forest and logistic regression with GridSearch's best parameter estimation, we found that for random 
         forest model with n-gram has better accuracty than with the parameter estimated. The logistic regression model with best parameter 
         has almost similar performance as n-gram model so logistic regression will be out choice of model for prediction.
