@@ -183,7 +183,7 @@ class Classifier(object):
         }
 
         self.gs_clf = GridSearchCV(self.svm_pipeline_ngram, self.parameters, n_jobs=-1)
-        self.gs_clf = gs_clf.fit(self.train_news['Statement'][:10000],self.train_news['Label'][:10000])
+        self.gs_clf = self.gs_clf.fit(self.train_news['Statement'][:10000],self.train_news['Label'][:10000])
 
         self.gs_clf.best_score_
         self.gs_clf.best_params_
