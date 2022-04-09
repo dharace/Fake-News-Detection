@@ -203,7 +203,7 @@ class Classifier(object):
         self.random_forest_final.fit(self.train_news['Statement'],self.train_news['Label'])
         self.predicted_rf_final = self.random_forest_final.predict(self.test_news['Statement'])
         np.mean(self.predicted_rf_final == self.test_news['Label'])
-        print(self.metrics.classification_report(self.test_news['Label'], self.predicted_rf_final))
+        print(metrics.classification_report(self.test_news['Label'], self.predicted_rf_final))
 
         self.logR_pipeline_final = Pipeline([
                 #('LogRCV',countV_ngram),
@@ -215,7 +215,7 @@ class Classifier(object):
         self.predicted_LogR_final = self.logR_pipeline_final.predict(self.test_news['Statement'])
         np.mean(self.predicted_LogR_final == self.test_news['Label'])
         #accuracy = 0.62
-        print(self.metrics.classification_report(self.test_news['Label'], self.predicted_LogR_final))
+        print(metrics.classification_report(self.test_news['Label'], self.predicted_LogR_final))
 
         """ by running both random forest and logistic regression with GridSearch's best parameter estimation, we found that for random 
         forest model with n-gram has better accuracty than with the parameter estimated. The logistic regression model with best parameter 
