@@ -40,7 +40,7 @@ class Classifier(object):
 
         self.nb_pipeline.fit(self.train_news['Statement'],self.train_news['Label'])
         self.predicted_nb = self.nb_pipeline.predict(self.test_news['Statement'])
-        self.np.mean(self.predicted_nb == self.test_news['Label'])
+        np.mean(self.predicted_nb == self.test_news['Label'])
 
 
         #building classifier using logistic regression
@@ -51,7 +51,7 @@ class Classifier(object):
 
         self.logR_pipeline.fit(self.train_news['Statement'],self.train_news['Label'])
         self.predicted_LogR = self.logR_pipeline.predict(self.test_news['Statement'])
-        self.np.mean(self.predicted_LogR == self.test_news['Label'])
+        np.mean(self.predicted_LogR == self.test_news['Label'])
 
 
         #building Linear SVM classfier
@@ -62,7 +62,7 @@ class Classifier(object):
 
         self.svm_pipeline.fit(self.train_news['Statement'],self.train_news['Label'])
         self.predicted_svm = self.svm_pipeline.predict(self.test_news['Statement'])
-        self.np.mean(self.predicted_svm == self.test_news['Label'])
+        np.mean(self.predicted_svm == self.test_news['Label'])
 
 
         #using SVM Stochastic Gradient Descent on hinge loss
@@ -73,7 +73,7 @@ class Classifier(object):
 
         self.sgd_pipeline.fit(self.train_news['Statement'],self.train_news['Label'])
         self.predicted_sgd = self.sgd_pipeline.predict(self.test_news['Statement'])
-        self.np.mean(self.predicted_sgd == self.test_news['Label'])
+        np.mean(self.predicted_sgd == self.test_news['Label'])
 
 
         #random forest
@@ -94,7 +94,7 @@ class Classifier(object):
 
         self.nb_pipeline_ngram.fit(self.train_news['Statement'],self.train_news['Label'])
         self.predicted_nb_ngram = self.nb_pipeline_ngram.predict(self.test_news['Statement'])
-        self.np.mean(self.predicted_nb_ngram == self.test_news['Label'])
+        np.mean(self.predicted_nb_ngram == self.test_news['Label'])
 
 
         #logistic regression classifier
@@ -105,7 +105,7 @@ class Classifier(object):
 
         self.logR_pipeline_ngram.fit(self.train_news['Statement'],self.train_news['Label'])
         self.predicted_LogR_ngram = self.logR_pipeline_ngram.predict(self.test_news['Statement'])
-        self.np.mean(self.predicted_LogR_ngram == self.test_news['Label'])
+        np.mean(self.predicted_LogR_ngram == self.test_news['Label'])
 
 
         #linear SVM classifier
@@ -116,7 +116,7 @@ class Classifier(object):
 
         self.svm_pipeline_ngram.fit(self.train_news['Statement'],self.train_news['Label'])
         self.predicted_svm_ngram = self.svm_pipeline_ngram.predict(self.test_news['Statement'])
-        self.np.mean(self.predicted_svm_ngram == self.test_news['Label'])
+        np.mean(self.predicted_svm_ngram == self.test_news['Label'])
 
 
         #sgd classifier
@@ -127,7 +127,7 @@ class Classifier(object):
 
         self.sgd_pipeline_ngram.fit(self.train_news['Statement'],self.train_news['Label'])
         self.predicted_sgd_ngram = self.sgd_pipeline_ngram.predict(self.test_news['Statement'])
-        self.np.mean(self.predicted_sgd_ngram == self.test_news['Label'])
+        np.mean(self.predicted_sgd_ngram == self.test_news['Label'])
 
 
         #random forest classifier
@@ -138,7 +138,7 @@ class Classifier(object):
     
         self.random_forest_ngram.fit(self.train_news['Statement'],self.train_news['Label'])
         self.predicted_rf_ngram = self.random_forest_ngram.predict(self.test_news['Statement'])
-        self.np.mean(self.predicted_rf_ngram == self.test_news['Label'])
+        np.mean(self.predicted_rf_ngram == self.test_news['Label'])
 
         self.test_news['Label'].shape
 
@@ -202,7 +202,7 @@ class Classifier(object):
     
         self.random_forest_final.fit(self.train_news['Statement'],self.train_news['Label'])
         self.predicted_rf_final = self.random_forest_final.predict(self.test_news['Statement'])
-        self.np.mean(self.predicted_rf_final == self.test_news['Label'])
+        np.mean(self.predicted_rf_final == self.test_news['Label'])
         print(self.metrics.classification_report(self.test_news['Label'], self.predicted_rf_final))
 
         self.logR_pipeline_final = Pipeline([
@@ -213,7 +213,7 @@ class Classifier(object):
 
         self.logR_pipeline_final.fit(self.train_news['Statement'],self.train_news['Label'])
         self.predicted_LogR_final = self.logR_pipeline_final.predict(self.test_news['Statement'])
-        self.np.mean(self.predicted_LogR_final == self.test_news['Label'])
+        np.mean(self.predicted_LogR_final == self.test_news['Label'])
         #accuracy = 0.62
         print(self.metrics.classification_report(self.test_news['Label'], self.predicted_LogR_final))
 
