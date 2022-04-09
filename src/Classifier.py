@@ -23,16 +23,15 @@ from sklearn.metrics import average_precision_score
 class Classifier(object):
 
     def __init__(self, countV, test_news, train_news, tfidf_ngram, model_file):
-        import numpy as np
-        
         self.countV = countV
         self.test_news = test_news
         self.train_news = train_news
         self.tfidf_ngram = tfidf_ngram
         self.model_file = model_file
-       
-        #the feature selection has been done in FeatureSelection.py module. here we will create models using those features for prediction
-        #first we will use bag of words techniques
+
+     #the feature selection has been done in FeatureSelection.py module. here we will create models using those features for prediction
+     #first we will use bag of words techniques
+    def buildClassifier(self):
         #building classifier using naive bayes 
         self.nb_pipeline = Pipeline([
                 ('NBCV', self.countV),
@@ -86,7 +85,9 @@ class Classifier(object):
         self.predicted_rf = self.random_forest.predict(self.test_news['Statement'])
         np.mean(self.predicted_rf == self.test_news['Label'])
 
-        ##Now using n-grams
+
+    ##Now using n-grams
+    def buildClassifierUsingNgrams(self):
         #naive-bayes classifier
         self.nb_pipeline_ngram = Pipeline([
                 ('nb_tfidf',self.tfidf_ngram),
@@ -142,12 +143,15 @@ class Classifier(object):
 
         self.test_news['Label'].shape
 
-        """Out of all the models fitted, we would take 2 best performing model. we would call them candidate models
-        from the confusion matrix, we can see that random forest and logistic regression are best performing 
-        in terms of precision and recall (take a look into false positive and true negative counts which appeares
-        to be low compared to rest of the models)
-        """
 
+
+
+    """Out of all the models fitted, we would take 2 best performing model. we would call them candidate models
+    from the confusion matrix, we can see that random forest and logistic regression are best performing 
+    in terms of precision and recall (take a look into false positive and true negative counts which appeares
+    to be low compared to rest of the models)"""
+
+    def calculateClassifierParam(self):  
         #grid-search parameter optimization
         #random forest classifier parameters
         self.parameters = {'rf_tfidf__ngram_range': [(1, 1), (1, 2),(1,3),(1,4),(1,5)],
@@ -190,9 +194,10 @@ class Classifier(object):
         self.gs_clf.cv_results_
 
         
-        
-        #by running above commands we can find the model with best performing parameters
 
+        
+    #by running above commands we can find the model with best performing parameters
+    def findBestPerformingModel(self):
 
         #running both random forest and logistic regression models again with best parameter found with GridSearch method
         self.random_forest_final = Pipeline([
