@@ -122,7 +122,7 @@ class Classifier(object):
         #sgd classifier
         self.sgd_pipeline_ngram = Pipeline([
                  ('sgd_tfidf',self.tfidf_ngram),
-                 ('sgd_clf',SGDClassifier(loss='hinge', penalty='l2', alpha=1e-3, n_iter=5))
+                 ('sgd_clf',SGDClassifier(loss='hinge', penalty='l2', alpha=1e-3, max_iter=5))
                  ])
 
         self.sgd_pipeline_ngram.fit(self.train_news['Statement'],self.train_news['Label'])
