@@ -68,7 +68,7 @@ class Classifier(object):
         #using SVM Stochastic Gradient Descent on hinge loss
         self.sgd_pipeline = Pipeline([
                 ('svm2CV',self.countV),
-                ('svm2_clf',SGDClassifier(loss='hinge', penalty='l2', alpha=1e-3, n_iter=5))
+                ('svm2_clf',SGDClassifier(loss='hinge', penalty='l2', alpha=1e-3, max_iter=5))
                 ])
 
         self.sgd_pipeline.fit(self.train_news['Statement'],self.train_news['Label'])
