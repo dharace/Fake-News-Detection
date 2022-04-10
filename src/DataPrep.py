@@ -41,7 +41,7 @@ class DataPrep(object):
     #data_obs()
 
     #distribution of classes for prediction
-    def create_distribution(dataFile):
+    def create_distribution(self, dataFile):
         return sb.countplot(x='Label', data=dataFile, palette='hls')
 
     #data integrity check (missing label values)
@@ -66,7 +66,7 @@ class DataPrep(object):
 
 
     #Stemming
-    def stem_tokens(tokens, stemmer):
+    def stem_tokens(self, tokens, stemmer):
         stemmed = []
         for token in tokens:
             stemmed.append(stemmer.stem(token))
@@ -83,7 +83,7 @@ class DataPrep(object):
 
     #creating ngrams
     #unigram 
-    def create_unigram(words):
+    def create_unigram(self, words):
         assert type(words) == list
         return words
 
@@ -127,7 +127,7 @@ class DataPrep(object):
 
    
 
-    def tokenizer(text):
+    def tokenizer(self, text):
         return text.split()
 
 
