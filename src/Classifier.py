@@ -18,6 +18,7 @@ from sklearn.model_selection import learning_curve
 import matplotlib.pyplot as plt
 from sklearn.metrics import precision_recall_curve
 from sklearn.metrics import average_precision_score
+import itertools
 
 
 class Classifier(object):
@@ -208,7 +209,8 @@ class Classifier(object):
         self.random_forest_final.fit(self.train_news['Statement'],self.train_news['Label'])
         self.predicted_rf_final = self.random_forest_final.predict(self.test_news['Statement'])
         np.mean(self.predicted_rf_final == self.test_news['Label'])
-      
+        print(metrics.classification_report(self.test_news['Label'], self.predicted_rf_final))
+
         self.logR_pipeline_final = Pipeline([
                 #('LogRCV',countV_ngram),
                 ('LogR_tfidf',TfidfVectorizer(stop_words='english',ngram_range=(1,5),use_idf=True,smooth_idf=False)),
@@ -218,7 +220,9 @@ class Classifier(object):
         self.logR_pipeline_final.fit(self.train_news['Statement'],self.train_news['Label'])
         self.predicted_LogR_final = self.logR_pipeline_final.predict(self.test_news['Statement'])
         np.mean(self.predicted_LogR_final == self.test_news['Label'])
-     
+        #accuracy = 0.62
+        print(metrics.classification_report(self.test_news['Label'], self.predicted_LogR_final))
+
         """ by running both random forest and logistic regression with GridSearch's best parameter estimation, we found that for random 
         forest model with n-gram has better accuracty than with the parameter estimated. The logistic regression model with best parameter 
         has almost similar performance as n-gram model so logistic regression will be out choice of model for prediction.
@@ -259,7 +263,7 @@ class Classifier(object):
 
     #Plotting learing curve
     def plot_learing_curve(self, pipeline,title):
-        size = 2550
+        size = 10000
         cv = KFold(size, shuffle=True)
     
         X = self.train_news["Statement"]
@@ -324,6 +328,64 @@ class Classifier(object):
         plt.xlim([0.0, 1.0])
         plt.title('2-class Random Forest Precision-Recall curve: AP={0:0.2f}'.format(
                   average_precision))
+
+
+    #User defined functon for K-Fold cross validatoin
+    def build_confusion_matrix(self, classifier, title):
+    
+        k_fold = KFold(n_splits=5)
+        scores = []
+        confusion = np.array([[0,0],[0,0]])
+
+        for train_ind, test_ind in k_fold.split(self.train_news):
+            train_text = self.train_news.iloc[train_ind]['Statement'] 
+            train_y = self.train_news.iloc[train_ind]['Label']
+    
+            test_text = self.train_news.iloc[test_ind]['Statement']
+            test_y = self.train_news.iloc[test_ind]['Label']
+        
+            classifier.fit(train_text,train_y)
+            predictions = classifier.predict(test_text)
+        
+            confusion += confusion_matrix(test_y,predictions)
+            score = f1_score(test_y,predictions)
+            scores.append(score)
+    
+        self.plot_confusion_matrix(confusion, classes=['FAKE Data', 'REAL Data'], title=title)
+
+        return (print('Total statements classified:', len(self.train_news)),
+        print('Score:', sum(scores)/len(scores)),
+        print('score length', len(scores)),
+        print('Confusion matrix:'),
+        print(confusion))
+
+    def plot_confusion_matrix(self, cm, classes, title,
+                              normalize=False,
+                              cmap=plt.cm.Blues):
+    
+        plt.imshow(cm, interpolation='nearest', cmap=cmap)
+        plt.title('Confusion Matrix ' + title)
+        plt.colorbar()
+        tick_marks = np.arange(len(classes))
+        plt.xticks(tick_marks, classes, rotation=45)
+        plt.yticks(tick_marks, classes)
+
+        if normalize:
+            cm = cm.astype('float') / cm.sum(axis=1)[:, np.newaxis]
+            print("Normalized confusion matrix")
+        else:
+            print('Confusion matrix, without normalization')
+
+        thresh = cm.max() / 2.
+        for i, j in itertools.product(range(cm.shape[0]), range(cm.shape[1])):
+            plt.text(j, i, cm[i, j],
+                     horizontalalignment="center",
+                     color="white" if cm[i, j] > thresh else "black")
+
+        plt.tight_layout()
+        plt.ylabel('True label')
+        plt.xlabel('Predicted label')
+
     
  
     """
