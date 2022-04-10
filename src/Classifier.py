@@ -19,6 +19,7 @@ import matplotlib.pyplot as plt
 from sklearn.metrics import precision_recall_curve
 from sklearn.metrics import average_precision_score
 import itertools
+import sklearn.metrics as metrics
 
 
 class Classifier(object):
