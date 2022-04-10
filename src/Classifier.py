@@ -264,7 +264,7 @@ class Classifier(object):
 
     #Plotting learing curve
     def plot_learing_curve(self, pipeline,title):
-        size = 10000
+        size = 2550
         cv = KFold(size, shuffle=True)
     
         X = self.train_news["Statement"]
