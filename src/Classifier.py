@@ -259,7 +259,7 @@ class Classifier(object):
 
     #Plotting learing curve
     def plot_learing_curve(self, pipeline,title):
-        size = 10000
+        size = 2550
         cv = KFold(size, shuffle=True)
     
         X = self.train_news["Statement"]
@@ -332,7 +332,7 @@ class Classifier(object):
     will extract top 50 features.
     """
 
-    def show_most_informative_features(model, vect, clf, text=None, n=50):
+    def show_most_informative_features(self, model, vect, clf, text=None, n=50):
         # Extract the vectorizer and the classifier from the pipeline
         vectorizer = model.named_steps[vect]
         classifier = model.named_steps[clf]
