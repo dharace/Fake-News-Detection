@@ -24,9 +24,9 @@ Step 1: Clone this github repository and set it as your working directory by the
 !git clone https://github.com/dharace/Fake-News-Detection.git
 !cd /content/Fake-News-Detection
 ```
-Step 2: Install all the dependencies from the requirements.txt
+Step 2: Install all the dependencies from the Requirements.txt
 ```
-pip install -r requirements.txt
+pip install -r Requirements.txt
 ```
 Step 3: Import required classes from github to call methods.</br>
 Step 4: Install dataset.</br>
