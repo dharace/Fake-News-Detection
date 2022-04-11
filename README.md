@@ -3,10 +3,10 @@ In this project, we have used various natural language processing techniques and
 
 ## Prerequisites
 
--Python 3.6
--Sklearn (scikit-learn)
--numpy
--scipy
+-Python 3.6</br>
+-Sklearn (scikit-learn)</br>
+-numpy</br>
+-scipy</br>
 ## Dataset
 The LIAR dataset was used for this project, and it consists of three.tsv files for test, train, and validation. It contains 13 columns for train, test and validation sets.
 
