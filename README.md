@@ -13,7 +13,8 @@ The LIAR dataset was used for this project, and it consists of three.tsv files f
 LIAR: A BENCHMARK DATASET FOR FAKE NEWS DETECTION
 
 Two columns are selected to use in this project:
- -Column 1: Statement (News headline or text).
+
+ -Column 1: Statement (News headline or text).</br> 
  -Column 2: Label (Label class contains: True, False)
  
 The dataset used in this project is in the .csv format, the original .tsv files can be found in liar_dataset.
