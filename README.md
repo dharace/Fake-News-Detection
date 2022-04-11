@@ -27,6 +27,13 @@ Step 2: Install all the dependencies from the requirements.txt
 ```
 pip install -r requirements.txt
 ```
+Step 3: Import required classes from github to call methods.
+Step 4: Install dataset.
+Step 5: Go to the "data" folder & download glove.6B.zip.
+Step 6: Create object of DataPrep.py and pass filepath of each dataset test.csv, train.csv, valid.csv.
+Step 7: Create object of FeatureSelection.py and pass filepath of glove_6B_50d.
+Step 8: Create object of Classifier.py and pass CountVectorizer object, test & train dataset, tfidf_ngram and final model.
+Step 9: Test the result.
 Preview of the code can be accessed through this [ipynb](https://colab.research.google.com/github/dharace/Fake-News-Detection/blob/main/TestFakeNewsDetection.ipynb#scrollTo=Dc3QFmjhCfF6) notebook.
 At the end of the program, you will be asked for an input which will be a piece of information or a news headline that you want to verify. Once you paste or type news headline, then press enter.
 The output of the true or false news will be produced along with the probability.
