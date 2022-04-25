@@ -31,7 +31,7 @@ At the end of the program, you will be asked for an input which will be a piece 
 The output of the true or false news will be produced along with the probability.
 ## Baseline Model
 
-|               | Precision      | Recall     |
+|               | Precision      | Recall     | F1 score    |
 | ------------- | ------------- | -------- |
-| [Deep Ensemble](https://arxiv.org/abs/1811.04670) | Test1         |  0.3 |
-| [Baseline model](https://arxiv.org/pdf/1705.00648.pdf) | Test2         | 0.2  |
+| [Deep Ensemble](https://arxiv.org/abs/1811.04670) | 0.55         |  0.45 |  0.43 |
+| [AENeT](https://link.springer.com/article/10.1007/s00521-021-06450-4) | 63.85         | 57.61  | 60.57 |
