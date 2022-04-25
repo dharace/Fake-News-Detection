@@ -32,6 +32,6 @@ The output of the true or false news will be produced along with the probability
 ## Baseline Model
 
 |               | Precision      | Recall     | F1 score    |
-| ------------- | ------------- | -------- |
+| -------------                                     | ------------- | -------- |
 | [Deep Ensemble](https://arxiv.org/abs/1811.04670) | 0.55         |  0.45 |  0.43 |
 | [AENeT](https://link.springer.com/article/10.1007/s00521-021-06450-4) | 63.85         | 57.61  | 60.57 |
