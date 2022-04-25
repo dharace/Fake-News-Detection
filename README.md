@@ -33,5 +33,5 @@ The output of the true or false news will be produced along with the probability
 
 |               | Precision | Recall | F1 score |
 |---------------|-----------|--------|----------|
-| AENeT         | 0.63      | 0.57   | 0.60     |
-| Deep Ensemble | 0.55      | 0.45   | 0.43     |
+| [AENeT](https://link.springer.com/article/10.1007/s00521-021-06450-4)         | 0.63      | 0.57   | 0.60     |
+| Deep Ensemble(https://arxiv.org/abs/1811.04670) | 0.55      | 0.45   | 0.43     |
