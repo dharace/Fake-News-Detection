@@ -29,3 +29,9 @@ Step 9: Test the result.</br>
 Preview of the code can be accessed through this [ipynb](https://colab.research.google.com/github/dharace/Fake-News-Detection/blob/main/TestFakeNewsDetection.ipynb#scrollTo=Dc3QFmjhCfF6) notebook.
 At the end of the program, you will be asked for an input which will be a piece of information or a news headline that you want to verify. Once you paste or type news headline, then press enter.
 The output of the true or false news will be produced along with the probability.
+## Baseline Model
+
+|               | Precision      | Recall     |
+| ------------- | ------------- | -------- |
+| [Deep Ensemble](https://arxiv.org/abs/1811.04670) | Test1         |  0.3 |
+| [Baseline model](https://arxiv.org/pdf/1705.00648.pdf) | Test2         | 0.2  |
